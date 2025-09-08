@@ -1,5 +1,5 @@
 import pytest
-from basicmathlib.basicmath import square, factorial, is_prime
+from basicmathlib.basicmath import square, factorial, is_prime, gcd, lcm
 
 # ---------------- square ----------------
 def test_square_happy_paths():
@@ -33,3 +33,23 @@ def test_is_prime_edges_and_errors():
     assert is_prime(0) is False
     with pytest.raises(TypeError):
         is_prime(7.0)  # non-integer
+
+# ---------------- gcd ----------------
+def test_gcd_happy_paths():
+    assert gcd(54, 24) == 6
+    assert gcd(-54, 24) == 6  # sign doesn't matter
+
+def test_gcd_edges_and_errors():
+    assert gcd(0, 0) == 0
+    with pytest.raises(TypeError):
+        gcd(10, 2.0)
+
+# ---------------- lcm ----------------
+def test_lcm_happy_paths():
+    assert lcm(4, 6) == 12
+    assert lcm(-4, 6) == 12  # non-negative
+
+def test_lcm_edges_and_errors():
+    assert lcm(0, 5) == 0
+    with pytest.raises(TypeError):
+        lcm("4", 6)
