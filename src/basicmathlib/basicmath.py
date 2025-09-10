@@ -3,19 +3,6 @@ from math import isfinite
 
 __all__ = ["square", "factorial", "is_prime", "gcd", "lcm"]
 
-def ensure_number(x):
-    if not isinstance(x, (int, float)):
-        raise TypeError("A number expected (int or float).")
-    if isinstance(x, float) and not isfinite(x):
-        raise ValueError("Number must be finite.")
-    return x
-
-
-def ensure_int(x, name="n"):
-    if not isinstance(x, int):
-        raise TypeError(f"{name} must be an integer.")
-    return x
-
 def square(n: int | float) -> int | float: # Returns the square of a number.
     ensure_number(n)
     return n * n
